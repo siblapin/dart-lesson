@@ -1,5 +1,3 @@
-import 'package:dart_lesson_1/dart_lesson_1.dart' as dart_lesson_1;
-
 void main() {
   int gdc(a, b) {
     while (a != b) {
