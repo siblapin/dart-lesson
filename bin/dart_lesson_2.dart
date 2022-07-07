@@ -6,5 +6,4 @@ void main() {
     x = x ~/ 2;
   }
   print(list1.reversed);
-  print('GIT');
 }
