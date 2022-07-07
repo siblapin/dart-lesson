@@ -11,7 +11,11 @@
 # (the recommended set includes the core lints).
 # The core lints are also what is used by pub.dev for scoring packages.
 
-include: package:lints/recommended.yaml
+package: flutter_lints/flutter.yaml
+
+linter:
+  https://github.com/siblapin/dart-lesson.git
+
 
 # Uncomment the following section to specify additional rules.
 
