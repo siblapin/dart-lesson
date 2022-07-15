@@ -4,14 +4,20 @@ void main() {
     1: "Alex",
     2: "Petr",
     3: "Evgen",
-    4: "Petr"
+    4: "Petr",
+    5: "Petr",
   };
-  var name = "Alex";
+
+  final Map<int, String> Request = {};
+  var name = "Petr";
   var sum = 0;
-  for (var index = 1; index < 5; index++) {
+
+  for (var index = 0; index <= NamePerson.length; index++) {
     if (NamePerson[index] == name) {
       sum = sum + 1;
+      Request[sum] = name;
     }
   }
-  print(sum);
+
+  print("${Request.values.last} : ${Request.keys.last}");
 }
