@@ -18,7 +18,7 @@ void main() {
 
   List<String> numbersOne = [];
 
-  for (var index = 0; index != ramdom.length; index++) {
+  for (var index = 0; index < ramdom.length; index++) {
     switch (ramdom[index]) {
       case 'one':
         numbersOne.add('one');
