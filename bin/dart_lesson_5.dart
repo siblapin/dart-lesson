@@ -6,7 +6,7 @@
 import 'dart:math';
 
 void main() {
-  var ramdom = [
+  var random = [
     "one",
     "two",
     "three",
@@ -18,8 +18,8 @@ void main() {
 
   List<String> numbersOne = [];
 
-  for (var index = 0; index < ramdom.length; index++) {
-    switch (ramdom[index]) {
+  for (var index = 0; index < random.length; index++) {
+    switch (random[index]) {
       case 'one':
         numbersOne.add('one');
         break;

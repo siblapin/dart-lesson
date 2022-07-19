@@ -5,23 +5,22 @@
 //и ещё несколько на своё усмотрение (например, конструктор, возвращающий точку с координатами [1,1,1], которая определяет единичный вектор).
 import 'dart:math';
 
-void main() {}
+void main() {
+  var distanceTo = Point(0, 0).distanceTo(Point(10, 0));
+  print(distanceTo); // 10.0
+}
 
 class Point {
-  int x = 4;
-  int z = 4;
-  int y = 4;
+  double x;
+  double y;
 
-  sum(int x, int y, int z) {
-    return x + y + z;
-  }
+  Point(this.x, this.y);
 
-  //var xxx = sum(1, 2, 3);
-
-  double distanceTo(sum) {
-    var dx = 10 - sum.x;
-    var dy = 10 - sum.y;
+  double distanceTo(
+    Point p1,
+  ) {
+    var dx = x - p1.x;
+    var dy = y - p1.y;
     return sqrt(dx * dx + dy * dy);
-    print(sqrt);
   }
 }
