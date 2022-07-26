@@ -6,3 +6,11 @@
 //Также в UserManager реализуйте метод, который выведет почту всех пользователей, однако если пользователь admin, будет выведено значение после @.
 //Проверьте реализованные методы на практике.
 void main() {}
+
+class User {
+  var email;
+}
+
+extension AdminUser on User {}
+
+extension GeneralUser on User {}
