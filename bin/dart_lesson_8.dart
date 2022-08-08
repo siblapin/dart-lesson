@@ -6,44 +6,56 @@
 //Далее реализуйте класс UserManager<T extends User>, у которого будет храниться список пользователей и будут методы добавления или удаления их.
 //Также в UserManager реализуйте метод, который выведет почту всех пользователей, однако если пользователь admin, будет выведено значение после @.
 //Проверьте реализованные методы на практике.
+
 void main() {
-  final user = User("stavr.dmb@mail.ru");
-  final user1 = AdminUser("stavr.dmb@gmail.ru");
+  final user = User("s.dm@mail.ru");
+  final user1 = AdminUser("s3.dm@mail.ru");
+  final user2 = GeneralUser("s3.dm@yandex.ru");
+  var userManager = UserManager();
+  userManager.add(user.userEmail);
+  userManager.add(user1.adminUser);
+  userManager.add(user2.generalUser);
+  print(userManager.printList());
 }
 
+// миксин для AdminUser
 mixin GetMail {
-  getMailSystem(String email) {
-    var email1 = email.substring(email.indexOf("@"));
-    print(email1);
+  getMailSystem(String x) {
+    var b = x.substring(x.indexOf("@"));
+    return b;
   }
 }
 
-class User with GetMail {
-  var a;
-  User(this.a) {
-    getMailSystem(a);
-  }
+class User {
+  var userEmail;
+  User(this.userEmail) {}
 }
 
-class AdminUser extends User {
-  AdminUser(email) : super(email);
+class AdminUser with GetMail {
+  var adminUser;
 
-  var b;
-  @override
-  getMailSystem(String b) {
-    // TODO: implement getMailSystem
-    return super.getMailSystem(b);
+  AdminUser(this.adminUser) {
+    adminUser = getMailSystem(adminUser);
   }
 }
 
 class GeneralUser extends User {
-  GeneralUser(email) : super(email);
+  GeneralUser(user) : super(user);
+  var generalUser;
 }
 
-//класс для хранения списка пользователей и будут методы добавления или удаления их.
-//выведет почту всех пользователей, однако если пользователь admin, будет выведено значение после @.
-class UserManager extends User {
-  UserManager(email) : super(email);
-
+class UserManager {
   List userList = [];
+
+  add(addIndex) {
+    userList.add(addIndex);
+  }
+
+  del(delIndex) {
+    userList.remove('');
+  }
+
+  printList() {
+    print(userList.join(','));
+  }
 }
