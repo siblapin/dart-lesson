@@ -7,24 +7,43 @@
 //Также в UserManager реализуйте метод, который выведет почту всех пользователей, однако если пользователь admin, будет выведено значение после @.
 //Проверьте реализованные методы на практике.
 void main() {
-  AdminUser().getMailSystem("sib.lapin@mail.ru");
+  final user = User("stavr.dmb@mail.ru");
+  final user1 = AdminUser("stavr.dmb@gmail.ru");
 }
 
-mixin User {
-  var email = "sib.lapin@mail.ru";
-
-  // который возвращает значение из email, которое находится после @(Например, если email пользователя user@mail.ru).
+mixin GetMail {
   getMailSystem(String email) {
     var email1 = email.substring(email.indexOf("@"));
     print(email1);
   }
 }
 
-// миксин от getMailSystem
-class AdminUser with User {}
+class User with GetMail {
+  var a;
+  User(this.a) {
+    getMailSystem(a);
+  }
+}
 
-class GeneralUser with User {}
+class AdminUser extends User {
+  AdminUser(email) : super(email);
+
+  var b;
+  @override
+  getMailSystem(String b) {
+    // TODO: implement getMailSystem
+    return super.getMailSystem(b);
+  }
+}
+
+class GeneralUser extends User {
+  GeneralUser(email) : super(email);
+}
 
 //класс для хранения списка пользователей и будут методы добавления или удаления их.
 //выведет почту всех пользователей, однако если пользователь admin, будет выведено значение после @.
-class UserManager with User {}
+class UserManager extends User {
+  UserManager(email) : super(email);
+
+  List userList = [];
+}
