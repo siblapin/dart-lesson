@@ -13,49 +13,46 @@ void main() {
   final user2 = GeneralUser("s3.dm@yandex.ru");
   var userManager = UserManager();
   userManager.add(user.userEmail);
-  userManager.add(user1.adminUser);
-  userManager.add(user2.generalUser);
-  print(userManager.printList());
+  userManager.add(user1.userEmail);
+  userManager.add(user2.userEmail);
+  userManager.printList();
+  print(user1.getMailSystem());
 }
 
 // миксин для AdminUser
-mixin GetMail {
-  getMailSystem(String x) {
-    var b = x.substring(x.indexOf("@"));
+mixin GetMail on User {
+  getMailSystem() {
+    var email = super.userEmail;
+    var b = email.substring(email.indexOf("@"));
     return b;
   }
 }
 
 class User {
-  var userEmail;
-  User(this.userEmail) {}
+  final String userEmail;
+  const User(this.userEmail);
 }
 
-class AdminUser with GetMail {
-  var adminUser;
-
-  AdminUser(this.adminUser) {
-    adminUser = getMailSystem(adminUser);
-  }
+class AdminUser extends User with GetMail {
+  const AdminUser(userEmail) : super(userEmail);
 }
 
 class GeneralUser extends User {
-  GeneralUser(user) : super(user);
-  var generalUser;
+  const GeneralUser(userEmail) : super(userEmail);
 }
 
 class UserManager {
-  List userList = [];
+  final List _userList = [];
 
   add(addIndex) {
-    userList.add(addIndex);
+    _userList.add(addIndex);
   }
 
   del(delIndex) {
-    userList.remove('');
+    _userList.remove(delIndex);
   }
 
   printList() {
-    print(userList.join(','));
+    print(_userList);
   }
 }
